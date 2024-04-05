@@ -1,4 +1,5 @@
 require './lib/ship'
+require 'pry'
 
 RSpec.configure do |config|
       config.formatter = :documentation
@@ -12,7 +13,7 @@ RSpec.describe Ship do
     describe '#initialize' do
         
         it 'can initialize' do
-            expect(@crusier).to be_an_instance_of(Ship)
+            expect(@cruiser).to be_an_instance_of(Ship)
         end
 
         it 'has a name' do
@@ -40,18 +41,17 @@ RSpec.describe Ship do
             expect(@cruiser.sunk?).to be false
             @cruiser.hit
             
-            expect(@cruiser.health ).to eq(2)
+            expect(@cruiser.health).to eq(2)
             expect(@cruiser.sunk?).to be false
             @cruiser.hit
             
-            expect(@cruiser.health ).to eq(1)
+            expect(@cruiser.health).to eq(1)
             expect(@cruiser.sunk?).to be false
             @cruiser.hit
             
-            expect(@cruiser.health ).to eq(0)
+            expect(@cruiser.health).to eq(0)
             expect(@cruiser.sunk?).to be true
         end
 
-    end
-
 end
+
