@@ -34,16 +34,32 @@ RSpec.describe Cell do
     end
 
     describe '#place_ship?' do
-    it 'can place a ship' do
-        cruiser = Ship.new("Cruiser", 3)
+        it 'can place a ship' do
+            cruiser = Ship.new("Cruiser", 3)
         
-        expect(@cell.empty?).to be true
+            expect(@cell.empty?).to be true
 
-        @cell.place_ship(cruiser)
+            @cell.place_ship(cruiser)
 
-        expect(@cell.ship).to eq(cruiser)
+            expect(@cell.ship).to eq(cruiser)
 
-        expect(@cell.empty?).to be false
+            expect(@cell.empty?).to be false
+        end
     end
-end
+
+    describe '#fired_upon' do
+        it 'fired_upon?' do
+            cruiser = Ship.new("Cruiser", 3)
+        
+            expect(@cell.empty?).to be true
+
+            @cell.place_ship(cruiser)
+
+            expect(@cell.ship).to eq(cruiser)
+
+            expect(@cell.empty?).to be false
+        end
+    end
+
+
 end
