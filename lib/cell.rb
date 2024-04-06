@@ -21,12 +21,24 @@ class Cell
 
     def fire_upon
         if !empty?
-            ship.hit
-            @fired_upon = true
+            ship.hit 
         end
-        
-        
-        
+        @fired_upon = true
+    end 
 
+    def render(show_ship = false)
+        if fired_upon?
+            if !empty? && @ship.sunk?
+                "X"
+            elsif !empty?
+                "H"
+            else 
+                "M"
+        end
+        elsif show_ship && !empty?
+            "S"
+        else
+            "."
+        end
     end
 end
