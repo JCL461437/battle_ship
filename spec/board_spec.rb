@@ -16,7 +16,7 @@ RSpec.describe Board do
             expect(@board).to be_an_instance_of(Board)
         end
         
-        it 'can  all cells' do
+        it 'can collect all cells' do
             expect(@board.cells).to eq(all_cells)
         end
         
