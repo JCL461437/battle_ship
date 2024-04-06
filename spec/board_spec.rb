@@ -53,6 +53,15 @@ RSpec.describe Board do
             expect(@board.valid_placement?(submarine, ["C1", "B1"])).to be false
          
         end
+
+        it 'can check if the coordinates are diagonal' do
+            cruiser = Ship.new("Cruiser", 3)
+            submarine = Ship.new("Submarine", 2)
+        
+            expect(@board.valid_placement?(cruiser, ["A1", "B2", "C3"])).to be false
+            expect(@board.valid_placement?(submarine, ["C2","D3"])).to be false
+         
+        end
     end
     
 end
