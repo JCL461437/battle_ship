@@ -16,7 +16,7 @@ RSpec.describe Board do
             expect(@board).to be_an_instance_of(Board)
         end
         
-        it 'can collect all cells' do
+        it 'can  all cells' do
             expect(@board.cells).to eq(all_cells)
         end
         
@@ -24,8 +24,7 @@ RSpec.describe Board do
 
     describe '#validating_coordinate?' do
         it 'can ' do
-            expect(@board.cells).to eq(all_cells)
-
+            
             expect(@board.valid_coordinate?("A1")).to be true
             expect(@board.valid_coordinate?("D4")).to be true
             expect(@board.valid_coordinate?("A5")).to be false
@@ -34,5 +33,28 @@ RSpec.describe Board do
         
     end
 
+    describe '#validating_placement?' do
+        it 'can check if number of coordinates in the array is the same as the ships length' do
+            cruiser = Ship.new("Cruiser", 3)
+            submarine = Ship.new("Submarine", 2)
+        
+            expect(@board.valid_placement?(cruiser, ["A1", "A2"])).to be false
+            expect(@board.valid_placement?(submarine, ["A2", "A3", "A4"])).to be false
+         
+        end
 
+        it 'can check if the coordinates are consecutive' do
+            cruiser = Ship.new("Cruiser", 3)
+            submarine = Ship.new("Submarine", 2)
+        
+            expect(@board.valid_placement?(cruiser, ["A1", "A2", "A4"])).to be false
+            expect(@board.valid_placement?(submarine, ["A1","C1"])).to be false
+            expect(@board.valid_placement?(cruiser, ["A3","A2","A1"])).to be false
+            expect(@board.valid_placement?(submarine, ["C1", "B1"])).to be false
+         
+        end
+    end
+    
 end
+
+
