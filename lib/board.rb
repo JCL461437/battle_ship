@@ -76,5 +76,27 @@ class Board
             end
         end
     end
-    
+
+    def isHorizontal?(coordinates)
+        row = coordinates[0][0,1]
+
+        currIndex = 1
+        prevIndex = 0
+
+        loop do
+            if coordinates[currIndex][1,2].to_i - coordinates[prevIndex][1,2].to_i == 1
+                if row == coordinates[currIndex][0,1]
+                    currIndex += 1
+                    prevIndex += 1
+                    if currIndex == coordinates.length
+                        return true
+                    end
+                else
+                    return false
+                end
+            else
+                return false
+            end
+        end
+    end
 end
