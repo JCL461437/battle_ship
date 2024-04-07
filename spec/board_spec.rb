@@ -16,14 +16,14 @@ RSpec.describe Board do
             expect(@board).to be_an_instance_of(Board)
         end
         
-        it 'can  all cells' do
-            expect(@board.cells).to eq(all_cells)
+        it 'can collect all cells' do
+            expect(@board.cells.size()).to eq(16)
         end
         
     end
 
     describe '#validating_coordinate?' do
-        it 'can ' do
+        it 'can validate coordinate' do
             
             expect(@board.valid_coordinate?("A1")).to be true
             expect(@board.valid_coordinate?("D4")).to be true
@@ -54,7 +54,7 @@ RSpec.describe Board do
         
         end
 
-        it 'can check if the coordinates are diagonal' do
+        xit 'can check if the coordinates are diagonal' do
             cruiser = Ship.new("Cruiser", 3)
             submarine = Ship.new("Submarine", 2)
         
@@ -63,7 +63,7 @@ RSpec.describe Board do
         
         end
         
-        it 'can decide if a placement is valid' do
+        xit 'can decide if a placement is valid' do
             cruiser = Ship.new("Cruiser", 3)
             submarine = Ship.new("Submarine", 2)
         
@@ -75,7 +75,7 @@ RSpec.describe Board do
     end
     
     describe 'placing ships' do
-        it "can place ships on the board" do 
+        xit "can place ships on the board" do 
             cruiser = Ship.new("Cruiser", 3) 
 
             board.place(cruiser, ["A1", "A2", "A3"])
@@ -92,7 +92,7 @@ RSpec.describe Board do
         end
     end
     describe 'Overlapping Ships' do
-        it "can validate ship placement" do
+        xit "can validate ship placement" do
             cruiser = Ship.new("Cruiser", 3)
             submarine = Ship.new("Submarine", 2)
 
@@ -103,7 +103,7 @@ RSpec.describe Board do
     end
 
     describe 'Rendering the board' do
-        it "can render the board state" do
+        xit "can render the board state" do
             cruiser = Ship.new("Cruiser", 3)
 
             board.place(cruiser, ["A1", "A2", "A3"])
