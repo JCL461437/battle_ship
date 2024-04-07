@@ -29,52 +29,28 @@ class Board
         end
 
     end
-
+    
     def valid_coordinate?(coordinate)
         @cells.has_key?(coordinate)
     end
 
     def valid_placement?(ship, coordinates)
-        return false unless ship.length == coordinates.length
-        # if coordinates.count == ship.length && @cells.keys == coordinates
-        #     true
-        # end
-
-        return false unless consecutive_coordinates?(coordinates)
+        if correct_size?(ship, coordinates)
+            if isVertical?(coordinates)
+                return true
+            elsif isHorizontal?(coordinates)
+                return true
+            else
+                return false
+            end
+        else
+            return false
+        end    
+    end
+    
+    def correct_size?(ship, coordinates)
+        ship.length == coordinates.length
     end
 
-    def consecutive_coordinates?(ship, coordinates)
-
-    end
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    # def cells
-    #     empty_cells = Hash.new(0)
-    #     count = 0
-
-    #     cells = empty_cells.each do |cell|
-    #         cell = Cell.new(coordinate)
-
-    #     end
-    # end
-
-    #while loop?
-
-    #unitl loop?
-
-
+    
 end
