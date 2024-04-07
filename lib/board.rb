@@ -29,52 +29,72 @@ class Board
         end
 
     end
-
+    
     def valid_coordinate?(coordinate)
         @cells.has_key?(coordinate)
     end
 
     def valid_placement?(ship, coordinates)
-        return false unless ship.length == coordinates.length
-        # if coordinates.count == ship.length && @cells.keys == coordinates
-        #     true
-        # end
-
-        return false unless consecutive_coordinates?(coordinates)
+        if correct_size?(ship, coordinates)
+            if isVertical?(coordinates)
+                return true
+            elsif isHorizontal?(coordinates)
+                return true
+            else
+                return false
+            end
+        else
+            return false
+        end    
+    end
+    
+    def correct_size?(ship, coordinates)
+        ship.length == coordinates.length
     end
 
-    def consecutive_coordinates?(ship, coordinates)
+    def isVertical?(coordinates)
+        colm = coordinates[0][1,2].to_i
+        
+        currIndex = 1
+        prevIndex = 0
 
+        loop do
+            if coordinates[currIndex][0,1].ord - coordinates[prevIndex][0,1].ord == 1
+                if colm == coordinates[currIndex][1,2].to_i
+                    currIndex += 1
+                    prevIndex += 1
+                    if currIndex == coordinates.length
+                        return true
+                    end
+                else
+                    return false
+                end
+            else
+                return false
+            end
+        end
     end
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    # def cells
-    #     empty_cells = Hash.new(0)
-    #     count = 0
 
-    #     cells = empty_cells.each do |cell|
-    #         cell = Cell.new(coordinate)
+    def isHorizontal?(coordinates)
+        row = coordinates[0][0,1]
 
-    #     end
-    # end
+        currIndex = 1
+        prevIndex = 0
 
-    #while loop?
-
-    #unitl loop?
-
-
+        loop do
+            if coordinates[currIndex][1,2].to_i - coordinates[prevIndex][1,2].to_i == 1
+                if row == coordinates[currIndex][0,1]
+                    currIndex += 1
+                    prevIndex += 1
+                    if currIndex == coordinates.length
+                        return true
+                    end
+                else
+                    return false
+                end
+            else
+                return false
+            end
+        end
+    end
 end
