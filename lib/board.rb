@@ -57,8 +57,6 @@ class Board
         
         currIndex = 1
         prevIndex = 0
-        p coordinates[currIndex][0,1].ord
-        p coordinates[prevIndex][0,1].ord
 
         loop do
             if coordinates[currIndex][0,1].ord - coordinates[prevIndex][0,1].ord == 1
