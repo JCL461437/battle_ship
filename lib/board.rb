@@ -52,5 +52,29 @@ class Board
         ship.length == coordinates.length
     end
 
+    def isVertical?(coordinates)
+        colm = coordinates[0][1,2].to_i
+        
+        currIndex = 1
+        prevIndex = 0
+        p coordinates[currIndex][0,1].ord
+        p coordinates[prevIndex][0,1].ord
+
+        loop do
+            if coordinates[currIndex][0,1].ord - coordinates[prevIndex][0,1].ord == 1
+                if colm == coordinates[currIndex][1,2].to_i
+                    currIndex += 1
+                    prevIndex += 1
+                    if currIndex == coordinates.length
+                        return true
+                    end
+                else
+                    return false
+                end
+            else
+                return false
+            end
+        end
+    end
     
 end
