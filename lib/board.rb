@@ -36,16 +36,33 @@ class Board
 
     def valid_placement?(ship, coordinates)
         return false unless ship.length == coordinates.length
+        
+        return false unless same_order?(coordinates) == true 
+
+        cells = @cells 
+
+        
+        end
+        
+          
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
         # if coordinates.count == ship.length && @cells.keys == coordinates
         #     true
         # end
 
-        return false unless consecutive_coordinates?(coordinates)
     end
 
-    def consecutive_coordinates?(ship, coordinates)
-
-    end
    
    
    
