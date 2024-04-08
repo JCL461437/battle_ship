@@ -99,23 +99,14 @@ class Board
     end
 
     def place(ship, coordinates)
-        
         coord_counter = 0
 
         coordinates.each do |coordinate|
-            if coord_counter != cordinates.length
-                if 
-                    if coordinate == cell.empty? && validating_placement?(ship, coordinates) == true
-                        cell.place_ship
-                        coord_counter += 1
-                    end
-                end
+            if coord_counter != coordinates.length
+                cells[coordinate].place_ship(ship)
             end
         end
     end
 
-
-
-
-
+    
 end
