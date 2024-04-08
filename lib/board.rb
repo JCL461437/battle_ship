@@ -33,17 +33,21 @@ class Board
 
     def valid_placement?(ship, coordinates)
         if coordinates.all?{|coordinate|valid_coordinate?(coordinate)}
-            if correct_size?(ship, coordinates)
-                if isVertical?(coordinates)
-                    return true
-                elsif isHorizontal?(coordinates)
-                    return true
+            if coordinates.none?{|coordinate|overlapping?(ship, coordinate)}
+                if correct_size?(ship, coordinates)
+                    if isVertical?(coordinates)
+                        return true
+                    elsif isHorizontal?(coordinates)
+                        return true
+                    else
+                        return false
+                    end
                 else
                     return false
-                end
+                end 
             else
-                return false
-            end    
+                return false   
+            end
         else 
             return false 
         end
@@ -105,5 +109,13 @@ class Board
         end
     end
 
+    def overlapping?(ship, coordinate)
+        cell = @cells[coordinate]
+        return false unless cell.ship 
+        cell.ship != ship
+    end
+
+    # def overlapping?
+    # end
     
 end
