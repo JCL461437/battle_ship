@@ -72,20 +72,26 @@ RSpec.describe Board do
         
             expect(@board.valid_placement?(submarine, ["A1", "A2"])).to be true
             expect(@board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to be true
-        
+
+            expect(@board.valid_placement?(cruiser, ["C1", "D1", "E1"])).to be false
+            expect(@board.valid_placement?(cruiser, ["A3", "A4", "A5"])).to be false
         end
 
     end
     
     describe 'placing ships' do
-        xit "can place ships on the board" do 
+        it "can place ships on the board" do 
             cruiser = Ship.new("Cruiser", 3) 
 
-            board.place(cruiser, ["A1", "A2", "A3"])
+            @board.place(cruiser, ["A1", "A2", "A3"])
 
-            expect(board.cells["A1"]).to eq(cell_1)
-            expect(board.cells["A2"]).to eq(cell_2)
-            expect(board.cells["A3"]).to eq(cell_3)
+            cell_1 = @board.cells["A1"]
+            cell_2 = @board.cells["A2"]
+            cell_3 = @board.cells["A3"]
+
+            expect(@board.cells["A1"]).to eq(cell_1)
+            expect(@board.cells["A2"]).to eq(cell_2)
+            expect(@board.cells["A3"]).to eq(cell_3)
 
             expect(cell_1.ship).to eq(cruiser)
             expect(cell_2.ship).to eq(cruiser)
@@ -94,14 +100,15 @@ RSpec.describe Board do
             expect(cell_3.ship == cell_2.ship).to be true
         end
     end
+    
     describe 'Overlapping Ships' do
-        xit "can validate ship placement" do
+        it "can validate ship placement" do
             cruiser = Ship.new("Cruiser", 3)
             submarine = Ship.new("Submarine", 2)
 
             board.place(cruiser, ["A1", "A2", "A3"])
 
-            expect(board.valid_placement?(submarine, ["A1", "B1"])).to be false
+            expect(@board.valid_placement?(submarine, ["A1", "B1"])).to be false
         end
     end
 
