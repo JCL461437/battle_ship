@@ -116,14 +116,14 @@ class Board
     end
 
     def render(show_ship = false)
-        board_display = "  1 2 3 4 \n"
-        ('A'..'D').each do |letter|
-            row_display = letter + ' '
-            (1..4).each do |number|
-                coordinate = "#{letter}#{number}"
+        board_display = "  1 2 3 4 \n" #creates header row
+        ('A'..'D').each do |letter| #enumerable to iterate through the range of letters between A and D
+            row_display = letter + ' ' #starts each row with respective letter (A,B,C,D)
+            (1..4).each do |number| #iterates through each corresponding number for the letter
+                coordinate = "#{letter}#{number}" #string concatanation of letter and number
                 row_display += cells[coordinate].render(show_ship) + ' '
             end
-            board_display += row_display.rstrip + " \n"
+            board_display += row_display.rstrip + " \n" #appends newline character at end of string row
         end
         board_display
     end
