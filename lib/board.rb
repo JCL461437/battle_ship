@@ -115,18 +115,5 @@ class Board
         cell.ship != ship
     end
 
-    def render(show_ship = false)
-        board_display = "  1 2 3 4 \n"
-        ('A'..'D').each do |letter|
-            row_display = letter + ' '
-            (1..4).each do |number|
-                coordinate = "#{letter}#{number}"
-                row_display += cells[coordinate].render(show_ship) + ' '
-            end
-            board_display += row_display.rstrip + " \n"
-        end
-        board_display
-    end
-      
-     
+    
 end
