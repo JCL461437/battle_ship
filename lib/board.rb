@@ -35,9 +35,9 @@ class Board
         if coordinates.all?{|coordinate|valid_coordinate?(coordinate)}
             if coordinates.none?{|coordinate|overlapping?(ship, coordinate)}
                 if correct_size?(ship, coordinates)
-                    if isVertical?(coordinates)
+                    if is_vertical?(coordinates)
                         return true
-                    elsif isHorizontal?(coordinates)
+                    elsif is_horizontal?(coordinates)
                         return true
                     else
                         return false
@@ -57,18 +57,18 @@ class Board
         ship.length == coordinates.length
     end
 
-    def isVertical?(coordinates)
+    def is_vertical?(coordinates)
         colm = coordinates[0][1,2].to_i
         
-        currIndex = 1
-        prevIndex = 0
+        curr_index = 1
+        prev_index = 0
 
         loop do
-            if coordinates[currIndex][0,1].ord - coordinates[prevIndex][0,1].ord == 1
-                if colm == coordinates[currIndex][1,2].to_i
-                    currIndex += 1
-                    prevIndex += 1
-                    if currIndex == coordinates.length
+            if coordinates[currIndex][0,1].ord - coordinates[prev_index][0,1].ord == 1
+                if colm == coordinates[curr_iIndex][1,2].to_i
+                    curr_index += 1
+                    prev_index += 1
+                    if curr_index == coordinates.length
                         return true
                     end
                 else
@@ -80,18 +80,18 @@ class Board
         end
     end
 
-    def isHorizontal?(coordinates)
+    def is_horizontal?(coordinates)
         row = coordinates[0][0,1]
 
-        currIndex = 1
-        prevIndex = 0
+        curr_index = 1
+        prev_index = 0
 
         loop do
-            if coordinates[currIndex][1,2].to_i - coordinates[prevIndex][1,2].to_i == 1
-                if row == coordinates[currIndex][0,1]
+            if coordinates[curr_index][1,2].to_i - coordinates[prev_index][1,2].to_i == 1
+                if row == coordinates[curr_index][0,1]
                     currIndex += 1
                     prevIndex += 1
-                    if currIndex == coordinates.length
+                    if curr_index == coordinates.length
                         return true
                     end
                 else
@@ -123,7 +123,7 @@ class Board
                 coordinate = "#{letter}#{number}" #string concatanation of letter and number
                 row_display += cells[coordinate].render(show_ship) + ' '
             end
-            board_display += row_display.rstrip + " \n" #appends newline character at end of string row
+            board_display += row_display. + "\n" #appends newline character at end of string row
         end
         board_display
     end
