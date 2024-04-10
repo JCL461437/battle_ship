@@ -60,16 +60,31 @@ class Game
         loop do
             shot_attempt = coords.sample
             if @player_board.cells[shot_attempt].fired_upon? == false
+                if @player_board.cells[shot_attempt].empty? == true 
+                    puts "My shot on #{shot_attempt} was a miss."
+                elsif @cplayer_board.cells[shot_attempt].empty? == false
+                    puts "My shot on #{shot_attempt} was a hit."
+                elsif @player_board.cells[shot_attempt].empty? == false && ship.health == 0 
+                    puts "My shot on #{shot_attempt} sunk your ship!"
+                end
                 return @player_board.cells[shot_attempt].fire_upon
             end
         end
     end
 
-    def player_shot(shot_attempt = gets.chomp)
+    def player_shot
         puts "Enter a coordinate for your shot: "
-        # shot_attempt = gets.chomp
+        shot_attempt = gets.chomp
+        last_player_shot(shot_attempt)
         loop do
             if @computer_board.cells[shot_attempt].fired_upon? == false
+                if @computer_board.cells[shot_attempt].empty? == true
+                    puts "Your shot on #{shot_attempt} was a miss."
+                elsif @computer_board.cells[shot_attempt].empty? == false
+                    puts "Your shot on #{last_player_shot} was a hit."
+                elsif @computer_board.cells[last_player_shot].empty? == false && ship.health == 0
+                    puts "Your shot on #{last_player_shot} sunk my ship!"
+                end
                 return @computer_board.cells[shot_attempt].fire_upon
             elsif @computer_board.cells[shot_attempt].fired_upon? == true
                 puts "You have already fired on that cell. Please choose a different coordinate."
@@ -79,31 +94,27 @@ class Game
         end
     end
 
-    def results
-        computer_results(last_computer_shot)
-        player_results(last_player_shot)
-    end
 
-    def player_results(last_player_shot)
+    # def player_results(last_player_shot)
 
-        if @computer_board.cells[last_player_shot].empty? == true 
-            puts "Your shot on #{last_player_shot} was a miss."
-        elsif @computer_board.cells[last_player_shot].empty? == false #try empty? == false if fired_upon? does not work
-            puts "Your shot on #{last_player_shot} was a hit."
-        elsif @computer_board.cells[last_player_shot].empty? == false && ship.health == 0 #add specific ship in parameter?
-            puts "Your shot on #{last_player_shot} sunk my ship!"
-        end
-    end
+    #     if @computer_board.cells[last_player_shot].empty? == true 
+    #         puts "Your shot on #{last_player_shot} was a miss."
+    #     elsif @computer_board.cells[last_player_shot].empty? == false #try empty? == false if fired_upon? does not work
+    #         puts "Your shot on #{last_player_shot} was a hit."
+    #     elsif @computer_board.cells[last_player_shot].empty? == false && ship.health == 0 #add specific ship in parameter?
+    #         puts "Your shot on #{last_player_shot} sunk my ship!"
+    #     end
+    # end
 
-    def computer_results(last_computer_shot)
+    # def computer_results(last_computer_shot)
 
-        if @player_board.cells[last_computer_shot].empty? == true 
-            puts "My shot on #{last_computer_shot} was a miss."
-        elsif @computer_board.cells[last_computer_shot].empty? == false
-            puts "My shot on #{last_computer_shot} was a hit."
-        elsif @computer_board.cells[last_computer_shot].empty? == false && ship.health == 0 
-            puts "My shot on #{last_computer_shot} sunk your ship!"
-        end
-    end
+    #     if @player_board.cells[last_computer_shot].empty? == true 
+    #         puts "My shot on #{last_computer_shot} was a miss."
+    #     elsif @computer_board.cells[last_computer_shot].empty? == false
+    #         puts "My shot on #{last_computer_shot} was a hit."
+    #     elsif @computer_board.cells[last_computer_shot].empty? == false && ship.health == 0 
+    #         puts "My shot on #{last_computer_shot} sunk your ship!"
+    #     end
+    # end
 
 end

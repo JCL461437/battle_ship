@@ -47,15 +47,15 @@ RSpec.describe Game do
 
     end
 
-    describe '#results'
+    describe '#results' do
 
-        it 'can give results for the computer'
-
+        it 'can give results for the computer' do
+            
         end 
 
-        it 'can give results for the computer'
+        it 'can give results for the player' do
 
-    end 
+        end 
 
     end
 end
