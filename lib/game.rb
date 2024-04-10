@@ -7,12 +7,6 @@ class Game
     attr_reader :computer_board, :player_board
 
     def initialize
-        @computer_board = Board.new
-        @player_board = Board.new
-        @computer_sub = Ship.new("Submarine", 2)
-        @computer_cruiser = Ship.new("Cruiser", 3)
-        @player_sub = Ship.new("Submarine", 2)
-        @player_cruiser = Ship.new("Cruiser", 3)
     end
 
     def random_ships
@@ -129,6 +123,7 @@ class Game
         
             #if met, end game, else run loop again
         end
+        main_menu
     end
 
     def win_con?
@@ -144,14 +139,21 @@ class Game
     end 
 
     def starts
+        @computer_board = Board.new
+        @player_board = Board.new
+        @computer_sub = Ship.new("Submarine", 2)
+        @computer_cruiser = Ship.new("Cruiser", 3)
+        @player_sub = Ship.new("Submarine", 2)
+        @player_cruiser = Ship.new("Cruiser", 3)
         random_ships
         get_players_placements
+        take_turn
     end
 
     def main_menu
         puts "Welcome to BATTLESHIP"
         puts "Enter [p] to play and [q] to quit."
-        answer = gets.chomp
+        answer = gets.chomp.downcase
         if answer == "p"
             starts
         elsif answer == "q"
@@ -159,27 +161,5 @@ class Game
             exit
         end
     end
-
-    # def player_results(last_player_shot)
-
-    #     if @computer_board.cells[last_player_shot].empty? == true 
-    #         puts "Your shot on #{last_player_shot} was a miss."
-    #     elsif @computer_board.cells[last_player_shot].empty? == false #try empty? == false if fired_upon? does not work
-    #         puts "Your shot on #{last_player_shot} was a hit."
-    #     elsif @computer_board.cells[last_player_shot].empty? == false && ship.health == 0 #add specific ship in parameter?
-    #         puts "Your shot on #{last_player_shot} sunk my ship!"
-    #     end
-    # end
-
-    # def computer_results(last_computer_shot)
-
-    #     if @player_board.cells[last_computer_shot].empty? == true 
-    #         puts "My shot on #{last_computer_shot} was a miss."
-    #     elsif @computer_board.cells[last_computer_shot].empty? == false
-    #         puts "My shot on #{last_computer_shot} was a hit."
-    #     elsif @computer_board.cells[last_computer_shot].empty? == false && ship.health == 0 
-    #         puts "My shot on #{last_computer_shot} sunk your ship!"
-    #     end
-    # end
 
 end

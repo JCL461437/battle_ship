@@ -8,4 +8,3 @@ require 'pry'
 game = Game.new
 
 game.main_menu
-game.take_turn
