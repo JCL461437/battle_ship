@@ -116,6 +116,7 @@ class Board
     end
 
     
+
     def render(show_ship = false)
         board_display = "  1 2 3 4 \n" #creates header row
         ('A'..'D').each do |letter| #enumerable to iterate through the range of letters between A and D
@@ -128,4 +129,6 @@ class Board
         end
         board_display
     end
+
+
 end
