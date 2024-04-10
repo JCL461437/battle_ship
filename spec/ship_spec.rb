@@ -35,7 +35,7 @@ RSpec.describe Ship do
         end
     end
 
-    describe '#hit'
+    describe '#hit' do
         it 'can be hit and sunk' do
             expect(@cruiser.health).to eq(3)
             expect(@cruiser.sunk?).to be false
@@ -52,6 +52,7 @@ RSpec.describe Ship do
             expect(@cruiser.health).to eq(0)
             expect(@cruiser.sunk?).to be true
         end
+    end
 
 end
 
