@@ -64,8 +64,8 @@ class Board
         prev_index = 0
 
         loop do
-            if coordinates[currIndex][0,1].ord - coordinates[prev_index][0,1].ord == 1
-                if colm == coordinates[curr_iIndex][1,2].to_i
+            if coordinates[curr_index][0,1].ord - coordinates[prev_index][0,1].ord == 1
+                if colm == coordinates[curr_index][1,2].to_i
                     curr_index += 1
                     prev_index += 1
                     if curr_index == coordinates.length
@@ -89,8 +89,8 @@ class Board
         loop do
             if coordinates[curr_index][1,2].to_i - coordinates[prev_index][1,2].to_i == 1
                 if row == coordinates[curr_index][0,1]
-                    currIndex += 1
-                    prevIndex += 1
+                    curr_index += 1
+                    prev_index += 1
                     if curr_index == coordinates.length
                         return true
                     end
