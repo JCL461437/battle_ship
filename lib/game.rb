@@ -55,7 +55,17 @@ class Game
         end
     end
 
-
+    def random_shots
+        puts "Hello"
+        coords = @player_board.cells.keys
+        loop do
+            shot_attempt = coords.sample(1)
+            puts @player_board.cells[shot_attempt]
+            if @player_board.cells[shot_attempt].fired_upon? == false
+                return @player_board.cells[shot_attempt].fire_upon
+            end
+        end
+    end
 
 
 

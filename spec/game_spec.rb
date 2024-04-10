@@ -31,14 +31,11 @@ RSpec.describe Game do
 
     end
 
-    describe 'player input test test' do
+    describe 'computer can fire randomly' do
 
-        it 'can place ship' do 
-            @game.get_players_placements
-            
-            puts @game.player_board.render(true)
-            expect(@game.player_board.render(true).include? "S")
-
+        it 'can fire' do 
+        
+            expect(@game.random_shots).to be true
         end
     end
 end
