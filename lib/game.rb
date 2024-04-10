@@ -71,15 +71,39 @@ class Game
         loop do
             if @computer_board.cells[shot_attempt].fired_upon? == false
                 return @computer_board.cells[shot_attempt].fire_upon
+            elsif @computer_board.cells[shot_attempt].fired_upon? == true
+                puts "You have already fired on that cell. Please choose a different coordinate."
             else
                 puts "Those are invalid coordinates. Please Try Again."
             end
         end
     end
 
+    def results
+        computer_results(last_computer_shot)
+        player_results(last_player_shot)
+    end
 
+    def player_results(last_player_shot)
 
+        if @computer_board.cells[last_player_shot].empty? == true 
+            puts "Your shot on #{last_player_shot} was a miss."
+        elsif @computer_board.cells[last_player_shot].empty? == false #try empty? == false if fired_upon? does not work
+            puts "Your shot on #{last_player_shot} was a hit."
+        elsif @computer_board.cells[last_player_shot].empty? == false && ship.health == 0 #add specific ship in parameter?
+            puts "Your shot on #{last_player_shot} sunk my ship!"
+        end
+    end
 
+    def computer_results(last_computer_shot)
 
+        if @player_board.cells[last_computer_shot].empty? == true 
+            puts "My shot on #{last_computer_shot} was a miss."
+        elsif @computer_board.cells[last_computer_shot].empty? == false
+            puts "My shot on #{last_computer_shot} was a hit."
+        elsif @computer_board.cells[last_computer_shot].empty? == false && ship.health == 0 
+            puts "My shot on #{last_computer_shot} sunk your ship!"
+        end
+    end
 
 end
