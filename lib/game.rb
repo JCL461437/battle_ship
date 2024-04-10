@@ -56,17 +56,26 @@ class Game
     end
 
     def random_shots
-        puts "Hello"
         coords = @player_board.cells.keys
         loop do
-            shot_attempt = coords.sample(1)
-            puts @player_board.cells[shot_attempt]
+            shot_attempt = coords.sample
             if @player_board.cells[shot_attempt].fired_upon? == false
                 return @player_board.cells[shot_attempt].fire_upon
             end
         end
     end
 
+    def player_shot(shot_attempt = gets.chomp)
+        puts "Enter a coordinate for your shot: "
+        # shot_attempt = gets.chomp
+        loop do
+            if @computer_board.cells[shot_attempt].fired_upon? == false
+                return @computer_board.cells[shot_attempt].fire_upon
+            else
+                puts "Those are invalid coordinates. Please Try Again."
+            end
+        end
+    end
 
 
 
