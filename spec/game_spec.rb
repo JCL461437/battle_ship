@@ -21,35 +21,24 @@ RSpec.describe Game do
         end
     end
 
-    describe '#main_menu' do
-        xit 'can start a game' do
-
-            expect(@game.wants_to_play?).to be true
-        end
-
-        xit 'can quit a game' do
-            
-            expect(@game.wants_to_play?).to be false
-        end
-    end
-
     describe '#computer_place' do
-        xit 'can randomly place' do
-            @game.computer_place(cruiser, coordinates)
 
-            expect(@game.computer_place).to be true
-        end
+        it 'can place a Shipwiches' do
 
-        xit 'can quit a game' do
+            expect(@game.computer_board.render(true).include? "S")
             
-            expect(@game.wants_to_play?).to be false
-        end
-
-        it 'can place a Shipwichs' do
-
-            expect(@game.computer_board.render(true).include?("S"))
         end
 
     end
 
+    describe 'player input test test' do
+
+        it 'can place ship' do 
+            @game.get_players_placements
+            
+            puts @game.player_board.render(true)
+            expect(@game.player_board.render(true).include? "S")
+
+        end
+    end
 end

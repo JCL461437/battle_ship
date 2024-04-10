@@ -11,6 +11,8 @@ class Game
         @player_board = player_board
         @computer_sub = Ship.new("Submarine", 2)
         @computer_cruiser = Ship.new("Cruiser", 3)
+        @player_sub = Ship.new("Submarine", 2)
+        @player_cruiser = Ship.new("Cruiser", 3)
     end
 
     def random_ships
@@ -28,6 +30,30 @@ class Game
         end
     end
 
+    def get_players_placements
+        puts "Please input your Cruiser's 3 Coordinates. Please use capital letters"
+        loop do
+            coords = gets.split
+                if @player_board.valid_placement?(@player_cruiser, coords)
+                    @player_board.place(@player_cruiser, coords)
+                    puts @player_board.render(true)
+                    break
+                else
+                    puts "Those are invalid coordinates. Please Try Again."
+                end
+        end
+        puts "Now enter the Submarine's 2 Coordinates."
+        loop do
+            coords = gets.split
+            if @player_board.valid_placement?(@player_sub, coords)
+                @player_board.place(@player_sub, coords)
+                puts @player_board.render(true)
+                break
+            else
+                puts "Those are invalid coordinates. Please Try Again."
+            end
+        end
+    end
 
 
 
