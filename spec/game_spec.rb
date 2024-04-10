@@ -9,7 +9,9 @@ end
 
 RSpec.describe Game do
     before(:each) do
-        @game = Game.new
+        @computer_board = Board.new
+        @player_board = Board.new
+        @game = Game.new(@computer_board, @player_board)
     end
 
     describe '#initialize' do
@@ -41,5 +43,17 @@ RSpec.describe Game do
             
             expect(@game.wants_to_play?).to be false
         end
+
+        it 'can place a sub sandwich' do
+            submarine = Ship.new("Submarine", 2)
+
+            expect(@game.computer_board.cells.has_value?()).to eq(true)
+        end
+
+        it 'generates a random coordinate' do
+        
+            expect(/[A-D][1-4]/.match(@game.random_coord)).to be_an_instance_of(MatchData)
+        end
     end
+
 end
