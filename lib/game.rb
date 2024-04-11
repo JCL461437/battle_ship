@@ -83,9 +83,6 @@ class Game
                     puts "Your shot on #{shot_attempt} sunk my ship!"
                 end
                 return @computer_board.cells[shot_attempt].fire_upon
-            # elsif @computer_board.cells[shot_attempt].fired_upon? == true
-            #     puts "You have already fired on that cell. Please choose a different coordinate."
-            #     player_shot
             else
                 puts "Those are invalid coordinates. Please Try Again."
             end
