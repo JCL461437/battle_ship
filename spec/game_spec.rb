@@ -31,11 +31,31 @@ RSpec.describe Game do
 
     end
 
-    describe 'computer can fire randomly' do
+    describe '#random_shot' do
 
         it 'can fire' do 
         
             expect(@game.random_shots).to be true
         end
+    end
+
+    describe '#player_shot' do
+
+        it 'can fire' do 
+            expect(@game.player_shot("A1")).to be true
+        end
+
+    end
+
+    describe '#results' do
+
+        it 'can give results for the computer' do
+            
+        end 
+
+        it 'can give results for the player' do
+
+        end 
+
     end
 end

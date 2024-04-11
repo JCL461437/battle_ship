@@ -80,7 +80,7 @@ RSpec.describe Board do
 
     end
     
-    describe 'placing ships' do
+    describe '#placing ships' do
         it "can place ships on the board" do 
             cruiser = Ship.new("Cruiser", 3) 
 
@@ -102,7 +102,7 @@ RSpec.describe Board do
         end
     end
     
-    describe 'Overlapping Ships' do
+    describe '#Overlapping Ships' do
         it "can validate ship placement" do
             cruiser = Ship.new("Cruiser", 3)
             submarine = Ship.new("Submarine", 2)
@@ -113,7 +113,7 @@ RSpec.describe Board do
         end
     end
 
-    describe 'Rendering the board' do
+    describe '#Rendering the board' do
         it "can render the board state" do
             cruiser = Ship.new("Cruiser", 3)
 
